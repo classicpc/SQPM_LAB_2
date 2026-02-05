@@ -38,10 +38,12 @@ public class Binary
 		// If all digits are '0', ensure number is "0"
 		this.number = (beg == number.length()) ? "0" : number.substring(beg);
 	
-		// Ensure empty strings are replaced with "0"
-		if (this.number.isEmpty()) {
+		// uncomment the following code
+		/*
+		if (this.number.isEmpty()) { // replace empty strings with a single zero
 			this.number = "0";
 		}
+  		*/
 	}
 	/**
 	* Return the binary value of the variable
@@ -86,4 +88,60 @@ public class Binary
 		return result;
 		
 	}
-}	
+
+	/**
+	* Bitwise logical OR of two binary variables.
+	* @param num1 The first binary object
+	* @param num2 The second binary object
+	* @return A binary variable with a value of num1 OR num2
+	*/
+	public static Binary or(Binary num1, Binary num2) {
+		StringBuilder result = new StringBuilder();
+		String n1 = num1.number;
+		String n2 = num2.number;
+		int maxLen = Math.max(n1.length(), n2.length());
+		n1 = String.format("%" + maxLen + "s", n1).replace(' ', '0');
+		n2 = String.format("%" + maxLen + "s", n2).replace(' ', '0');
+		for (int i = 0; i < maxLen; i++) {
+			result.append((n1.charAt(i) == '1' || n2.charAt(i) == '1') ? '1' : '0');
+		}
+		return new Binary(result.toString());
+	}
+
+	/**
+	* Bitwise logical AND of two binary variables.
+	* @param num1 The first binary object
+	* @param num2 The second binary object
+	* @return A binary variable with a value of num1 AND num2
+	*/
+	public static Binary and(Binary num1, Binary num2) {
+		StringBuilder result = new StringBuilder();
+		String n1 = num1.number;
+		String n2 = num2.number;
+		int maxLen = Math.max(n1.length(), n2.length());
+		n1 = String.format("%" + maxLen + "s", n1).replace(' ', '0');
+		n2 = String.format("%" + maxLen + "s", n2).replace(' ', '0');
+		for (int i = 0; i < maxLen; i++) {
+			result.append((n1.charAt(i) == '1' && n2.charAt(i) == '1') ? '1' : '0');
+		}
+		return new Binary(result.toString());
+	}
+
+	/**
+	* Multiply two binary variables.
+	* @param num1 The first binary object
+	* @param num2 The second binary object
+	* @return A binary variable with a value of num1 * num2
+	*/
+	public static Binary multiply(Binary num1, Binary num2) {
+		Binary result = new Binary("0");
+		String n2 = num2.number;
+		for (int i = n2.length() - 1; i >= 0; i--) {
+			if (n2.charAt(i) == '1') {
+				String partial = num1.number + "0".repeat(n2.length() - 1 - i);
+				result = add(result, new Binary(partial));
+			}
+		}
+		return result;
+	}
+}
