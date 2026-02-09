@@ -272,31 +272,12 @@ Run tests with verbose output:
 mvn test -X
 ```
 
-## Project Links
-
-- **GitHub Repository:** [Add your GitHub project link]
-- **Demo Video:** [Add your 5-minute demo video link]
-
-## Authors & Contributors
-
-- **Lab Course:** SOFE3980U - Software Quality & Process Management
-- **Semester:** Winter 2026
-- **Institution:** Ontario Tech University
-
-## License
-
-This project is provided as educational material for SOFE3980U Lab 2.
-
 ## Acknowledgments
 
 - Spring Boot documentation for framework guidance
 - Apache Maven for build automation
 - JUnit and Spring Test for testing frameworks
 - Thymeleaf for template engine support
-
-## Contact & Support
-
-For questions or issues with this project, please refer to the course materials or contact your instructor.
 
 ---
 
